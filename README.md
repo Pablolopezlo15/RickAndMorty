@@ -7,6 +7,16 @@ Explora el multiverso de personajes y guarda tus favoritos.
 
 ## 🛠️ Setup / Instalación
 
+## 📥 Clone the Repository / Clonar el Repositorio
+
+Clone the project to your local machine:  
+Clona el proyecto en tu máquina local:
+
+```bash
+git clone https://github.com/Pablolopezlo15/RickAndMorty.git
+cd RickAndMorty
+```
+
 Make sure to install dependencies:  
 Asegúrate de instalar las dependencias:
 
