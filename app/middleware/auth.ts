@@ -1,10 +1,6 @@
 import { useAuthStore } from '~/stores/auth'
 
 export default defineNuxtRouteMiddleware((to, from) => {
-  if (import.meta.server) {
-    return
-  }
-
   try {
     const nuxtApp = useNuxtApp()
     const authStore = useAuthStore(nuxtApp.$pinia)
