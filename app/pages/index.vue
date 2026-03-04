@@ -1,5 +1,6 @@
 <script setup lang="ts">
     import { useAuthStore } from '~/stores/auth'
+    import { useFavoritesStore } from '~/stores/favorites'
     import { useRouter } from 'vue-router'
     import { useCharacters } from '~/composables/useCharacters'
 
@@ -9,11 +10,16 @@
 
     const router = useRouter()
     const authStore = useAuthStore()
+    const favoritesStore = useFavoritesStore()
 
     const handleLogout = () => {
     authStore.logout()
     router.push('/login')
     }
+
+    onMounted(() => {
+        favoritesStore.initializeFavorites()
+    })
 
     const {
         data,
@@ -39,6 +45,8 @@
         return 'Ha ocurrido un error al cargar los personajes.'
     })
 
+    const favoritesCount = computed(() => favoritesStore.favorites.length)
+
 </script>
 
 
@@ -58,6 +66,15 @@
                 placeholder="Busca personajes por nombre..."
                 class="w-full px-4 py-2 border-2 border-gray-300 rounded-lg focus:border-purple-500 focus:outline-none"
             />
+        </div>
+        <div class="mb-6 flex justify-end">
+            <NuxtLink
+                to="/favorites"
+                class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-indigo-600 text-white font-semibold hover:bg-indigo-700 transition-colors"
+            >
+                Mis Favoritos
+                <span class="bg-indigo-500 text-xs px-2 py-0.5 rounded-full">{{ favoritesCount }}</span>
+            </NuxtLink>
         </div>
 
         <!-- Loading state -->

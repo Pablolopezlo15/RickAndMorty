@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { getStatusClasses, getStatusLabel } from '~/helpers/getStatus.ts'
+import { useFavoritesStore } from '~/stores/favorites'
 
 type Character = {
   id: number
@@ -11,6 +12,14 @@ type Character = {
 defineProps<{
   character: Character
 }>()
+
+const favoritesStore = useFavoritesStore()
+
+onMounted(() => {
+  favoritesStore.initializeFavorites()
+})
+
+const isCharacterFavorite = (characterId: number) => favoritesStore.isFavorite(characterId)
 </script>
 
 <template>
@@ -25,12 +34,14 @@ defineProps<{
 
       <button
         type="button"
-        class="absolute top-3 right-3 p-2 rounded-full bg-white/90 shadow-sm border border-gray-200/80 hover:bg-white hover:border-gray-300 transition-colors duration-150 opacity-0 group-hover:opacity-100 focus:opacity-100 focus:outline-none focus:ring-2 focus:ring-gray-300"
-        title="Guardar en favoritos"
+        class="absolute top-3 right-3 p-2 rounded-full bg-white/90 shadow-sm border border-gray-200/80 hover:bg-white hover:border-gray-300 transition-colors duration-150 focus:opacity-100 focus:outline-none focus:ring-2 focus:ring-gray-300"
+        :title="isCharacterFavorite(character.id) ? 'Quitar de favoritos' : 'Añadir a favoritos'"
+        @click="favoritesStore.toggleFavorite(character)"
       >
         <svg
-          class="w-5 h-5 text-gray-500 hover:text-red-600 transition-colors"
-          fill="none"
+          class="w-5 h-5 transition-colors"
+          :class="isCharacterFavorite(character.id) ? 'text-red-600' : 'text-gray-500 hover:text-red-600'"
+          :fill="isCharacterFavorite(character.id) ? 'currentColor' : 'none'"
           stroke="currentColor"
           viewBox="0 0 24 24"
           stroke-width="2"
@@ -62,6 +73,7 @@ defineProps<{
           </dd>
         </div>
       </dl>
+
     </div>
   </div>
 </template>
