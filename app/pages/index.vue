@@ -1,5 +1,6 @@
-<script setup lang="ts">
-    // No se necesita lógica específica para la página de inicio, ya que es principalmente una landing
+﻿<script setup lang="ts">
+    const { app } = useRuntimeConfig()
+    const landingBgImage = computed(() => "url('" + app.baseURL + "images/fondolanding.webp')")
 </script>
 
 <template>
@@ -12,7 +13,7 @@
     <!-- Imagen de fondo sutil (portal/multiverso) -->
     <div 
       class="absolute inset-0 bg-cover bg-center opacity-20 z-0 mix-blend-screen pointer-events-none"
-      :style="{ backgroundImage: `url('/images/fondolanding.webp')` }"
+      :style="{ backgroundImage: landingBgImage }"
     ></div>
 
     <main class="relative z-10 py-20 md:py-32">

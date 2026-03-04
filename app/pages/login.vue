@@ -9,6 +9,8 @@
 
     const router = useRouter()
     const authStore = useAuthStore()
+    const { app } = useRuntimeConfig()
+    const loginBgImage = computed(() => "url('" + app.baseURL + "images/rick-morty-bg.webp')")
 
     // Form data
     const email = ref<string>('')
@@ -75,7 +77,7 @@
 <template>
     <div
         class="min-h-screen bg-cover bg-center bg-no-repeat relative"
-        style="background-image: url('/images/rick-morty-bg.webp');"
+        :style="{ backgroundImage: loginBgImage }"
     >
         <div class="absolute inset-0 bg-slate-950/70"></div>
 
