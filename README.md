@@ -1,75 +1,39 @@
-# Nuxt Minimal Starter
+# 🛸 Rick and Morty Website / Sitio Web de Rick and Morty
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Explore the multiverse of characters and save your favorites.  
+Explora el multiverso de personajes y guarda tus favoritos.  
 
-## Setup
+---
 
-Make sure to install dependencies:
+## 🛠️ Setup / Instalación
+
+Make sure to install dependencies:  
+Asegúrate de instalar las dependencias:
 
 ```bash
-# npm
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
 ```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
+Start the development server on http://localhost:3000:  
+Inicia el servidor de desarrollo en http://localhost:3000:
 
 ```bash
-# npm
 npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
+## ⚡ Features / Funcionalidades
 
-Build the application for production:
+- 🌟 Browse all Rick and Morty characters.  
+  Navega por todos los personajes de Rick and Morty.  
 
-```bash
-# npm
-npm run build
+- ❤️ Mark and save your favorite characters.  
+  Marca y guarda tus personajes favoritos.  
 
-# pnpm
-pnpm build
+- 📱 Responsive design for mobile and desktop.  
+  Diseño responsivo para móvil y escritorio.  
 
-# yarn
-yarn build
+- 🔄 Fetch real-time data from the official Rick and Morty API.  
+  Obtén datos en tiempo real desde la API oficial de Rick and Morty.  
 
-# bun
-bun run build
-```
+---
 
-Locally preview production build:
 
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
