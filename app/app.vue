@@ -23,6 +23,7 @@
 
 
 <template>
+    <title>Rick and Morty App</title>
     <div class="min-h-screen flex flex-col">
         <Navbar />
         <main class="flex-1">
