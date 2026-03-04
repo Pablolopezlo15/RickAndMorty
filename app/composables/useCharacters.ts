@@ -2,21 +2,33 @@ export const useCharacters = () => {
   const search = ref('')
   const page = ref(1)
 
+  watch(
+    search,
+    () => {
+      page.value = 1
+    },
+    { immediate: true }
+  )
+
   const {
     data,
     pending,
     error,
     refresh
   } = useAsyncData(
-    () =>
-      $fetch('https://rickandmortyapi.com/api/character', {
-        params: {
-          name: search.value,
-          page: page.value
-        }
-      }),
+    () => {
+      const params: { page: number; name?: string } = { page: page.value }
+
+      const trimmedSearch = search.value.trim()
+      if (trimmedSearch) {
+        params.name = trimmedSearch
+      }
+
+      return $fetch('https://rickandmortyapi.com/api/character', { params })
+    },
     {
-      watch: [search, page]
+      watch: [search, page],
+      dedupe: 'defer'
     }
   )
 
