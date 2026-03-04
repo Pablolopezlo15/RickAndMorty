@@ -8,6 +8,8 @@
     })
 
     const authStore = useAuthStore()
+    const route = useRoute()
+    const showScrollToTop = computed(() => route.path !== '/login')
 
     // Initialize authentication state when the app loads
     onMounted(() => {
@@ -21,7 +23,12 @@
 
 
 <template>
-    <div>
-        <NuxtPage />
+    <div class="min-h-screen flex flex-col">
+        <Navbar />
+        <main class="flex-1">
+            <NuxtPage />
+        </main>
+        <ScrollToTop v-if="showScrollToTop" />
+        <Footer />
     </div>
 </template>

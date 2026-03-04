@@ -18,9 +18,9 @@ export default defineNuxtRouteMiddleware((to, from) => {
       }
     }
 
-    // If user is authenticated and tries to access login page, redirect to home
+    // If user is authenticated and tries to access login page, redirect to dashboard
     if (to.path === '/login' && authStore.isAuthenticated) {
-      return navigateTo('/')
+      return navigateTo('/dashboard')
     }
   } catch (error) {
     console.warn('Auth middleware error:', error)
