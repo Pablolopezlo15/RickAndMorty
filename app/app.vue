@@ -10,6 +10,14 @@
     const authStore = useAuthStore()
     const route = useRoute()
     const showScrollToTop = computed(() => route.path !== '/login')
+    const { app } = useRuntimeConfig()
+
+    useHead({
+        title: 'Rick and Morty App',
+        link: [
+            { rel: 'icon', type: 'image/x-icon', href: `${app.baseURL}favicon.ico` }
+        ]
+    })
 
     // Initialize authentication state when the app loads
     onMounted(() => {
@@ -23,7 +31,6 @@
 
 
 <template>
-    <title>Rick and Morty App</title>
     <div class="min-h-screen flex flex-col">
         <Navbar />
         <main class="flex-1">
